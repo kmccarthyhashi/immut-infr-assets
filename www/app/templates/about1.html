@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block main_body %}
+
+<div class="main-container">
+    <div class="main-content">
+
+        <div class="explainer-wrapper">
+
+            <div class="explainer" style="--splash-delay: 3">
+                <p>Not long ago, our servers were mostly based on MUTABLE infrastructure. 
+                    This meant that such servers were IRREPLACEABLE and UNIQUE systems… 
+                    Just like your favorite pets at home!</p>
+            </div>
+
+            <div class="explainer" style="--splash-delay: 6">
+                <p>These mutable servers were continually updated and modified in place on
+                    a server-by-server basis. 
+
+                    Now, we are in a transition towards immutable infrastructure! YAY!</p>
+                    <img src="{{ url_for('static', filename='img/spongebob-hooray.gif') }}">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block next_page %}
+<a href="{{ url_for('challenges') }}">
+    <img src="{{ url_for('static', filename='img/right-arrow.svg') }}" alt="Next">
+</a>
+{% endblock %}
