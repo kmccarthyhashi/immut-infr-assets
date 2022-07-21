@@ -11,15 +11,34 @@
 <div class="main-container">
     <div class="main-content">
         <div class="slide-content">
+            
+                <div class="explainer-wrapper">
+                    <ul><h1>Let’s recap what we’ve covered so far:</h1>
+                    Mutable = unique and each server modified in-place
+                    <br>
+                    <br><li>Servers updated individually rather than all at once</li>
+                    <li>ThinK: PETS! Because they are unique</li>
+                    </ul>
+                    <br>
 
-            <div class="explainer-wrapper">
-                <h1>Terraform Cloud and HCP Packer</h1>
-                <p>Make a commit to the <strong>production</strong> repository with Terraform
-                    code that uses an Amazon Machine Image (AMI) reference and build a new
-                    Amazon EC2 resource.</p>
-                <br>
-                <span class="tooltiptext" id="tooltiptext">Automated workflow</span>
-            </div>
+                    <center><img src="{{ url_for('static', filename='img/dog-cat-fish.png') }}" width="100" height="100"></center>
+                </div>
+    
+
+                <div class="explainer-wrapper">
+                    <ul>
+                        Immutable = easily replicable. For any change, all servers are 
+                        updated together so no versioning differences 
+                    <br>
+                    <br><li>Think: CATTLE! Each server is one of many in the “herd” of servers; 
+                        no individual is unique within the herd
+
+                    </ul>
+                    <br>
+
+                    <center><img src="{{ url_for('static', filename='img/cow-herd.png') }}" width="100" height="100"></center>
+                    <br>
+                </div>
 
         </div>
 

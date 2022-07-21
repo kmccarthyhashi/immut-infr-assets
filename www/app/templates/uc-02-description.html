@@ -3,6 +3,24 @@
 {% block head %}
 {{ super() }}
 <style>
+    .main-content {
+        width: var(--instruqt-view-width);
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .explainer-icon {
+        width: 128px;
+        height: 128px;
+    }
+
+    .explainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 </style>
 {% endblock %}
 
@@ -10,25 +28,19 @@
 
 <div class="main-container">
     <div class="main-content">
-        <div class="slide-content">
-            
-                <div class="explainer-wrapper">
-                    <h1>Mutable Infrastructure</h1>
-                    <p>Not long ago, our servers were mostly based on MUTABLE infrastructure. 
-                        This meant that such servers were IRREPLACEABLE and UNIQUE systems… 
-                        Just like your favorite pets at home! &#128054 &#128049</p>
+                
+                <h1>A few more definitions...</h1>
+                <br>
+                <ul>
+                    <li><strong>configuration drift</strong> = changes to software or hardware are not 
+                        efficiently tracked causing servers to become more divergent from 
+                        one another and the original config.
+                    </li>
                     <br>
-                </div>
-    
-                <div class="explainer" style="--splash-delay: 6">
-                    <p>These mutable servers were continually updated and modified in place on
-                        a server-by-server basis. 
-    
-                        Now, we are in a transition towards immutable infrastructure! YAY!</p>
-                    <img src="{{ url_for('static', filename='img/spongebob-hooray.gif') }}">
-                </div>
-
-        </div>
+                    <li><strong>snowflake servers</strong> = a server that requires special configuration 
+                        which makes scaling and recover from issues difficult
+                    </li>
+                </ul>
 
     </div>
 </div>
@@ -40,7 +52,6 @@
     <img src="{{ url_for('static', filename='img/left-arrow.svg') }}" alt="Last">
 </a>
 {% endblock %}
-
 
 {% block next_page %}
 <a href="{{ url_for('uc_02_workflow') }}">
