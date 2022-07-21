@@ -2,106 +2,60 @@
 
 {% block head %}
 {{ super() }}
+<style>
+    .main-content {
+        width: var(--instruqt-view-width);
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 20px;
+    }
 
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/forms.css') }}">
+    .explainer-icon {
+        width: 128px;
+        height: 128px;
+    }
 
-<script type="module" src="{{ url_for('static', filename='js/hcp_form_handler.js') }}"></script>
-
+    .explainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
 {% endblock %}
 
 {% block main_body %}
 
 <div class="main-container">
-    <div class="main-forms">
+    <div class="main-content">
 
-        <div class="explainer-wrapper" data-clickable="true">
-            <div class="explainer" style="--splash-delay: 1;">
-                <h1>HCP Requirements</h1>
-                <p>To describe the relationship between an Amazon Machine Image (AMI)
-                    and HashiCorp Packer we need access to your HCP organization.</p>
+        <div class="explainer-wrapper">
+
+            <div class=" explainer" style="--splash-delay: 1; width: 300px;">
+                
+                <h1>Immutable Infrastructure</h1>
+
+                <p> An IMMUTABLE infrastructure server is one that is 
+                    DISPOSABLE and easy to REPLICATE or SCALE with automated tools</p>
             </div>
-            <div class="explainer" style="--splash-delay: 3">
-                <p>Please refer to the HCP Packer Essentials setup guide to configure
-                    your own HCP resources. </p>
+        </div>
+        <div class="explainer-wrapper">
+
+
+            <div class="explainer" style="--splash-delay: 3; width: 300px;">
+            <br><br><br><br><br>
+                <p>IMMUTABLE infrastructure is much like CATTLE: a single member is just one of many in a herd; 
+                    each individual is not very unique nor indispensable. &#128004 </p>
+            </div>
+        </div>
+        <div class="explainer-wrapper">
+
+            <div class="explainer" style="--splash-delay: 6; width: 300px;">
+                <br><br><br><br>
+                <img src="{{ url_for('static', filename='img/compare-diagram.png') }}">
             </div>
         </div>
 
-        <div class="form-container">
-
-            <div class="form-wrapper" id="hcp-form-display">
-
-                <form action="" method="post" novalidate id="hcp-form" data-confettied="true">
-
-                    {{ hcp_form.hidden_tag() }}
-
-                    {{ hcp_form.organization_id.label }}
-                    {% if hcp_form.organization_id.errors %}
-                    <div class="form-errors">
-                        {% for error in hcp_form.organization_id.errors %}
-                        {{ error }}
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    <!-- <br> -->
-                    {{ hcp_form.organization_id(autocomplete="off", value=organization_id, required='required') }}
-                    <a href="https://portal.cloud.hashicorp.com/orgs" target="_blank">
-                        <img src="{{ url_for('static', filename='img/icon-link.svg') }}" alt="HCP Organization">
-                    </a>
-                    <br>
-
-                    {{ hcp_form.project_id.label }}
-                    {% if hcp_form.project_id.errors %}
-                    <div class="form-errors">
-                        {% for error in hcp_form.project_id.errors %}
-                        {{ error }}
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    {{ hcp_form.project_id(autocomplete="off", value=project_id, required='required') }} <br>
-
-                    {{ hcp_form.client_id.label }}
-                    {% if hcp_form.client_id.errors %}
-                    <div class="form-errors">
-                        {% for error in hcp_form.client_id.errors %}
-                        {{ error }}
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    {{ hcp_form.client_id(autocomplete="off", value=client_id, required='required') }}
-                    <a href="https://cloud.hashicorp.com/docs/hcp/admin/access-control/service-principals"
-                        target="_blank">
-                        <img src="{{ url_for('static', filename='img/icon-link.svg') }}" alt="HCP Service Principals">
-                    </a>
-                    <br>
-
-                    {{ hcp_form.client_secret.label }}
-                    {% if hcp_form.client_secret.errors %}
-                    <div class="form-errors">
-                        {% for error in hcp_form.client_secret.errors %}
-                        {{ error }}
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    {{ hcp_form.client_secret(autocomplete="off", value=client_secret, required='required') }} <br>
-                    {{ hcp_form.save_hcp_data() }}
-
-                </form>
-
-                <!-- <div class="form-results" id="hcp-form-results">
-                    <p>HCP Organization ID</p>
-                    <div class="form-results-text">{{ organization_id }}</div>
-                    <p>HCP Project ID</p>
-                    <div class="form-results-text">{{ project_id }}</div>
-                    <p>HCP Client ID</p>
-                    <div class="form-results-text">{{ client_id }}</div>
-                    <p>HCP Client Secret</p>
-                    <div class="form-results-text" data-text-private="true">{{ client_secret }}></div>
-                    <p>HCP Client Token</p>
-                    <div class="form-results-text" data-text-private="true">{{ client_token }}</div>
-                </div> -->
-
-            </div>
-        </div>
     </div>
 </div>
 
