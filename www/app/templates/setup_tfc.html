@@ -2,94 +2,39 @@
 
 {% block head %}
 {{ super() }}
+<style>
+    .main-content {
+        width: var(--instruqt-view-width);
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 20px;
+    }
 
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/forms.css') }}">
+    .explainer-icon {
+        width: 128px;
+        height: 128px;
+    }
 
-<script type="module" src="{{ url_for('static', filename='js/tfc_form_handler.js') }}"></script>
-
+    .explainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
 {% endblock %}
 
 {% block main_body %}
 
 <div class="main-container">
-    <div class="main-forms">
+    <div class="main-content">
 
-        <div class="explainer-wrapper" data-clickable="true">
-            <div class="explainer" style="--splash-delay: 1;">
-                <h1>TFC Requirements</h1>
-                <p>We are using Terraform Cloud to describe HashiCorp’s vision of a controlled
-                    lifecycle for machine images supported with automation. </p>
+            <div class="explainer" style="--splash-delay: 6; width: 300px;">
+                <br><br><br><br>
+                <img src="{{ url_for('static', filename='img/compare-diagram.png') }}">
             </div>
-            <div class="explainer" style="--splash-delay: 3">
-                <p>Please refer to the HCP Packer Essentials setup guide to configure
-                    your own TFC resources. </p>
-            </div>
-        </div>
-
-        <div class="form-container">
-
-            <div class="form-wrapper" id="tfc-form-display">
-
-                <form action="" method="post" novalidate id="tfc-form" data-confettied="true">
-
-                    {{ tfc_form.hidden_tag() }}
-
-                    {{ tfc_form.tfc_organization.label }}
-                    {% if tfc_form.tfc_organization.errors %}
-                    <div class="form-errors">
-                        {% for error in tfc_form.tfc_organization.errors %}
-                        {{ error }}
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    {{ tfc_form.tfc_organization(autocomplete="off", value=tfc_organization, required='required') }}
-                    <a href="https://app.terraform.io/app/organizations" target="_blank">
-                        <img src="{{ url_for('static', filename='img/icon-link.svg') }}" alt="TFC Organizations">
-                    </a>
-                    <br>
-
-                    {{ tfc_form.tfc_workspace.label }}
-                    {% if tfc_form.tfc_workspace.errors %}
-                    <div class="form-errors">
-                        {% for error in tfc_form.tfc_workspace.errors %}
-                        {{ error }}
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    {{ tfc_form.tfc_workspace(autocomplete="off", value=tfc_workspace, required='required') }}
-                    <a href="https://www.terraform.io/cloud-docs/workspaces/creating" target="_blank">
-                        <img src="{{ url_for('static', filename='img/icon-link.svg') }}" alt="TFC Workspaces">
-                    </a>
-                    <br>
-                    {{ tfc_form.tfc_token.label }}
-                    {% if tfc_form.tfc_token.errors %}
-                    <div class="form-errors">
-                        {% for error in tfc_form.tfc_token.errors %}
-                        {{ error }}
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    {{ tfc_form.tfc_token(autocomplete="off", value=tfc_token, required='required') }}
-                    <a href="https://app.terraform.io/app/settings/tokens" target="_blank">
-                        <img src="{{ url_for('static', filename='img/icon-link.svg') }}" alt="TFC Tokens">
-                    </a>
-                    <br>
-                    {{ tfc_form.save_tfc_data() }}
-
-                </form>
-
-                <!-- <div class="form-results" id="tfc-form-results">
-                    <p>TFC Organization</p>
-                    <div class="form-results-text">{{ tfc_organization }}</div>
-                    <p>TFC Workspace Name</p>
-                    <div class="form-results-text">{{ tfc_workspace }}</div>
-                    <p>TFC API Token</p>
-                    <div class="form-results-text" data-text-private="true">{{ tfc_token }}</div>
-                </div> -->
-
-            </div>
-        </div>
     </div>
+
 </div>
 
 {% endblock %}
