@@ -206,7 +206,58 @@ def getHCPBearerToken():
 
 @app.route('/uc-01-challenge')
 def uc_01_challenge():
-  return render_template('uc-01-challenge.html')
+
+  hcp_form = HCPForm()
+
+  if request.method == 'GET':
+    if not session.get('organization_id'):
+      session['organization_id'] = ""
+    if not session.get('project_id'):
+      session['project_id'] = ""
+    if not session.get('hcp_client_id'):
+      session['hcp_client_id'] = ""
+    if not session.get('hcp_client_secret'):
+      session['hcp_client_secret'] = ""
+
+  if request.method == 'POST':
+
+    if hcp_form.organization_id.data:
+      session['organization_id'] = hcp_form.organization_id.data
+    else:
+      session['organization_id'] = ""
+
+    if hcp_form.project_id.data:
+      session['project_id'] = hcp_form.project_id.data
+    else: 
+      session['project_id'] = ""
+
+    if hcp_form.client_id.data:
+      session['hcp_client_id'] = hcp_form.client_id.data
+    else:
+      session['hcp_client_id'] = ""
+
+    if  hcp_form.client_secret.data:
+      session['hcp_client_secret'] = hcp_form.client_secret.data
+    else:
+      session['hcp_client_secret'] = ""
+
+    if hcp_form.validate_on_submit():
+
+      validation = getHCPBearerToken()
+
+      if (validation.status_code == 200):  
+          session['hcp_client_token'] = validation.json()["access_token"]
+      else:
+          session['hcp_client_token'] = "Invalid Credentials."
+
+      writeToLocalConfigFile()
+
+  return render_template('uc-01-challenge.html', 
+      organization_id=session.get('organization_id'),
+      project_id=session.get('project_id'),
+      client_id=session.get('hcp_client_id'), 
+      client_secret=session.get('hcp_client_secret'),
+      hcp_form=hcp_form)
 
 @app.route('/uc-01-description')
 def uc_01_description():
