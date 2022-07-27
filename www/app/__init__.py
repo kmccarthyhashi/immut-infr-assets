@@ -261,7 +261,42 @@ def uc_01_challenge():
 
 @app.route('/uc-01-description')
 def uc_01_description():
-  return render_template('uc-01-description.html')
+  
+  tfc_form = TFCForm()
+
+  if request.method == 'GET':
+    if not session.get('tfc_organization'):
+      session['tfc_organization'] = ""
+    if not session.get('tfc_workspace'):
+      session['tfc_workspace'] = ""
+    if not session.get('tfc_token'):
+      session['tfc_token'] = ""
+
+  if request.method == 'POST':
+
+    if tfc_form.tfc_organization.data:
+      session['tfc_organization'] = tfc_form.tfc_organization.data
+    else:
+      session['tfc_organization'] = ""
+
+    if tfc_form.tfc_workspace.data:
+      session['tfc_workspace'] = tfc_form.tfc_workspace.data
+    else:
+      session['tfc_workspace'] = ""
+
+    if tfc_form.tfc_token.data:
+      session['tfc_token'] = tfc_form.tfc_token.data
+    else:
+      session['tfc_token'] = ""
+
+    if tfc_form.validate_on_submit():
+      writeToLocalConfigFile()
+
+  return render_template('uc-01-description.html',
+      tfc_organization = session.get('tfc_organization'),
+      tfc_workspace    = session.get('tfc_workspace'), 
+      tfc_token        = session.get('tfc_token'), 
+      tfc_form         = tfc_form)
 
 @app.route('/uc-01-example')
 def uc_01_example():
