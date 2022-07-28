@@ -12,6 +12,7 @@
 
             <div class="explainer-wrapper">
                 <h1>Movie buffs <strong>UNITE!</strong></h1>
+                <center><img src="{{ url_for('static', filename='img/sponge-movie.png') }}" alt="Spongebob Movie" width="200" height="275"></center>
                 <p>Congratulations! You and two of your best friends who are devoted movie-goers have created a web app to share your love for movies with the world.
                 </p>
                 <p>To get started, you’ve decided to leverage the help of the API (Application Programming Interface) from The Movie Database (TMDB).</p>
@@ -28,11 +29,11 @@
     </div>
 </div>
 
-<div class="explainer-wrapper">
+<!-- <div class="explainer-wrapper">
     <br><br>
-    <img src="{{ url_for('static', filename='img/sponge-movie.png') }}" alt="Spongebob Movie" width="200" height="275">
-    <!-- <img src="{{ url_for('static', filename='img/movie-clipart.png') }}" alt="Movie Icons" width="300" height="275"> -->
-</div>
+   <center><img src="{{ url_for('static', filename='img/sponge-movie.png') }}" alt="Spongebob Movie" width="200" height="275"></center>
+     <img src="{{ url_for('static', filename='img/movie-clipart.png') }}" alt="Movie Icons" width="300" height="275"> -->
+<!-- </div> -->
 {% endblock %}
 
 {% block last_page %}
