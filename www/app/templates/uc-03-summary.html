@@ -19,7 +19,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <strong>1. HashiCorp Cloud Platform (HCP) Packer</strong>:
+                        1. HashiCorp Cloud Platform (HCP) Packer
                         <!-- With corporate guidance, teams can automate the promotion of machine images to support emerging
                         standards. -->
                     </td>
@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <strong>2. Terraform Cloud for Business (TFCB)</strong>:
+                        2. Terraform Cloud for Business (TFCB)
                         <!-- When modifications are identified, teams can quickly upstream and downstream changes with
                         controlled automation. -->
 
@@ -47,8 +47,8 @@
                         vulnerabilities.</td>
                 </tr> -->
             </table>
-
-            <center><img src="{{ url_for('static', filename='img/bring-it-on.png') }}" alt="Bring it on" width="200" height="275"></center>
+            <br><br>
+            <center><img src="{{ url_for('static', filename='img/bring-it-on.png') }}" alt="Bring it on" width="350" height="275"></center>
         </div>
 
     </div>
@@ -56,8 +56,15 @@
 
 {% endblock %}
 
+
 {% block last_page %}
-<a href="{{ url_for('uc_03_workflow') }}">
+<a href="{{ url_for('uc_03_description') }}">
     <img src="{{ url_for('static', filename='img/left-arrow.svg') }}" alt="Last">
+</a>
+{% endblock %}
+
+{% block next_page %}
+<a href="{{ url_for('uc_03_workflow') }}">
+    <img src="{{ url_for('static', filename='img/right-arrow.svg') }}" alt="Next">
 </a>
 {% endblock %}
