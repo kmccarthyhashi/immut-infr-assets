@@ -2,38 +2,43 @@
 
 {% block head %}
 {{ super() }}
+
 {% endblock %}
 
 {% block main_body %}
 
 <div class="main-container">
     <div class="main-content">
-        <div class="slide-content">
+        <div class="explainer-wrapper">
 
-            <div class="explainer-wrapper">
-                <h1>Movie buffs <strong>UNITE!</strong></h1>
-                <center><img src="{{ url_for('static', filename='img/sponge-movie.png') }}" alt="Spongebob Movie" width="200" height="275"></center>
-                <p>Congratulations! You and two of your best friends who are devoted movie-goers have created a web app to share your love for movies with the world.
-                </p>
-                <p>To get started, you’ve decided to leverage the help of the API (Application Programming Interface) from The Movie Database (TMDB).</p>
-                
-                <p>Your web application retrieves up-to-date information on the week’s trending movies. 
-                </p>
-
-                <p>With each page refresh, you should see a new movie displayed along with its poster image and a short description.
-                </p>
-                
-            </div>
+            <h1>Maintaining auditability with an image registry</h1>
+            <table class="styled-table">
+                <tr>
+                    <th>Challenges</th>
+                    <th>Consequences</th>
+                </tr>
+                <tr>
+                    <td><strong>Image sprawl</strong>: Image diversity across multiple platforms leads to an extensive
+                        collection of
+                        assets.
+                    </td>
+                    <td>Teams that do not track their image assets centrally contribute to inconsistency, higher costs
+                        and security exposures.</td>
+                </tr>
+                <tr>
+                    <td><strong>Unmanaged lifecycle</strong>: Teams that create images need to manage the lifecycle of
+                        images in legacy,
+                        active and dormant stages.
+                    </td>
+                    <td>When a team does not follow given standards, technical, security, and governance guidelines
+                        place an organization in vulnerable situations.</td>
+                </tr>
+            </table>
 
         </div>
     </div>
 </div>
 
-<!-- <div class="explainer-wrapper">
-    <br><br>
-   <center><img src="{{ url_for('static', filename='img/sponge-movie.png') }}" alt="Spongebob Movie" width="200" height="275"></center>
-     <img src="{{ url_for('static', filename='img/movie-clipart.png') }}" alt="Movie Icons" width="300" height="275"> -->
-<!-- </div> -->
 {% endblock %}
 
 {% block last_page %}
@@ -42,9 +47,8 @@
 </a>
 {% endblock %}
 
-
 {% block next_page %}
-<a href="{{ url_for('uc_03_workflow') }}">
+<a href="{{ url_for('uc_03_summary') }}">
     <img src="{{ url_for('static', filename='img/right-arrow.svg') }}" alt="Next">
 </a>
 {% endblock %}
