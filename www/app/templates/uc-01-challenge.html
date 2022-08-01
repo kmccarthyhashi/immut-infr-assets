@@ -13,6 +13,7 @@
 
 <div class="main-container">
     <div class="main-forms">
+
         <div class="explainer-wrapper" data-clickable="true">
             <div class="explainer" style="--splash-delay: 1;">
                 <h1>HCP Requirements</h1>
@@ -106,8 +107,9 @@
 
 {% endblock %}
 
+
 {% block next_page %}
-<a href="{{ url_for('uc_01_description') }}">
+<a href="{{ url_for('uc-01-description') }}">
     <img src="{{ url_for('static', filename='img/right-arrow.svg') }}" alt="Next">
 </a>
 {% endblock %}
