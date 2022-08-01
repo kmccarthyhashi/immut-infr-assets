@@ -349,3 +349,7 @@ def uc_03_workflow():
 @app.route('/uc-03-summary')
 def uc_03_summary():
   return render_template('uc-03-summary.html')
+
+@app.route('/uc-04-challenge')
+def uc_04_challenge():
+  return render_template('uc-04-challenge.html')

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block main_body %}
+
+<div class="main-container">
+    <div class="main-content">
+        <div class="slide-content">
+
+            <div class="explainer-wrapper">
+                <center><h1>This is the new page that has been added <strong>UNITE!</strong></h1></center>
+                <center><img src="{{ url_for('static', filename='img/sponge-movie.png') }}" alt="Spongebob Movie" width="200" height="275"></center>
+                <p>Congratulations! You and two of your best friends who are devoted movie-goers have created a web app to share your love for movies with the world.
+                </p>
+                <p>To get started, you’ve decided to leverage the help of the API (Application Programming Interface) from The Movie Database (TMDB).</p>
+                
+                <p>Your web application retrieves up-to-date information on the week’s trending movies. 
+                </p>
+
+                <p>With each page refresh, you should see a new movie displayed along with its poster image and a short description.
+                </p>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block next_page %}
+<a href="{{ url_for('uc_03_description') }}">
+    <img src="{{ url_for('static', filename='img/right-arrow.svg') }}" alt="Next">
+</a>
+{% endblock %}
