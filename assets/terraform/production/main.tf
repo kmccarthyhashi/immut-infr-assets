@@ -1,69 +1,45 @@
 terraform {
   required_providers {
-
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.26.0"
+      version = "4.23.0" //this version is depecrated, had issues on mac w m1 chip 
+      //use 3.63.0 if this version doesn't work when running terraform apply && terraform init 
     }
-
     hcp = {
       source  = "hashicorp/hcp"
       version = "0.17.0"
     }
-
   }
-  required_version = ">= 0.14.5"
-}
 
+  #Change 
+
+  cloud { 
+  organization = "im-infr-proj" //Enter your own workspace form TFC
+
+  workspaces {
+   name = "immutable" //Enter your own workspace name  
+   }
+  }
+}
+variable "iteration_id" {
+  description = "HCP Packer Iteration ID"
+}
 provider "hcp" {}
+
+provider "aws" {
+  region = var.region
+}
 
 data "hcp_packer_iteration" "ubuntu" {
   bucket_name = var.hcp_bucket_ubuntu
   channel     = var.hcp_channel
 }
 
-data "hcp_packer_image" "ubuntu" {
+data "hcp_packer_image" "ubuntu-us-east-1" {
   bucket_name    = data.hcp_packer_iteration.ubuntu.bucket_name
-  iteration_id   = data.hcp_packer_iteration.ubuntu.ulid
   cloud_provider = "aws"
+  iteration_id   = var.iteration_id 
   region         = var.region
-}
-
-provider "aws" {
-  region = var.region
-}
-
-resource "aws_instance" "hashicups_frontend" {
-  ami                         = data.hcp_packer_image.ubuntu.cloud_image_id
-  instance_type               = "t2.micro"
-  subnet_id                   = aws_subnet.subnet_public.id
-  vpc_security_group_ids      = [aws_security_group.sg_22_80.id]
-  key_name                    = "hashicups_frontend"
-  associate_public_ip_address = true
-
-  tags = {
-    Name = "hashicups_frontend"
-  }
-}
-
-resource "tls_private_key" "main" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
-resource "aws_key_pair" "main" {
-  key_name   = "hashicups_frontend"
-  public_key = tls_private_key.main.public_key_openssh
-}
-
-resource "null_resource" "main" {
-  provisioner "local-exec" {
-    command = "echo \"${tls_private_key.main.private_key_pem}\" > private.key"
-  }
-
-  provisioner "local-exec" {
-    command = "chmod 600 private.key"
-  }
 }
 
 resource "aws_vpc" "vpc" {
@@ -108,6 +84,13 @@ resource "aws_security_group" "sg_22_80" {
   }
 
   ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
@@ -122,6 +105,20 @@ resource "aws_security_group" "sg_22_80" {
   }
 }
 
-output "app_url" {
-  value = "http://${aws_instance.hashicups_frontend.public_ip}"
+resource "aws_instance" "web" {
+  ami                         = data.hcp_packer_image.ubuntu-us-east-1.cloud_image_id
+  instance_type               = "t2.micro"
+  subnet_id                   = aws_subnet.subnet_public.id
+  vpc_security_group_ids      = [aws_security_group.sg_22_80.id]
+  associate_public_ip_address = true
+  user_data = file("${path.module}/userdata.sh")
+
+  tags = {
+    Name = "immutable-infrastructure"
+  }
+}
+
+output "public_ip" {
+  description = "URL for check endpoint"
+  value = "http://${aws_instance.web.public_ip}:8080"
 }

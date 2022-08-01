@@ -9,22 +9,22 @@ variable "cidr_subnet" {
 
 variable "environment_tag" {
   description = "Environment tag"
-  default     = "HashiCups Frontend Production"
+  default     = "Immutable Infrastructure"
 }
 
 variable "region" {
-  description = "The region Terraform deploys the new instance"
-  default     = "us-east-2"
+  description = "The region Terraform deploys your instance"
+  default     = "us-east-1"
 }
 
 variable "hcp_bucket_ubuntu" {
   description = "The Bucket where our AMI is listed."
-  default     = "hashicups-frontend-ubuntu"
+  default     = "immutable-infrastructure"
 }
 
 variable "hcp_channel" {
   description = "HCP Packer channel name"
-  default     = "hashicups-development"
+  default     = "production"
 }
 
 
