@@ -11,16 +11,20 @@
         <div class="slide-content">
 
             <div class="explainer-wrapper">
-                <center><h1>This is the new page that has been added <strong>UNITE!</strong></h1></center>
-                <center><img src="{{ url_for('static', filename='img/sponge-movie.png') }}" alt="Spongebob Movie" width="200" height="275"></center>
-                <p> New info to be added here.
+                <center><h1><strong>What we have covered in this lab track:</strong></h1></center>
+                <center><img src="{{ url_for('static', filename='img/spongebob-reading.gif') }}" alt="Spongebob Movie" width="200" height="275"></center>
+                <p> 1. What is immutable infrastructure
                 </p>
-                <p>To get started, you’ve decided to leverage the help of the API (Application Programming Interface) from The Movie Database (TMDB).</p>
+                <p>
+                    2. Registering an AMI and deploying a web application with HCP Packer and Terraform Cloud
+                </p>
                 
-                <p>Your web application retrieves up-to-date information on the week’s trending movies. 
+                <p>
+                    3. Automating app alterations and re-deployment with CI/CD pipeline using GitHub Actions
                 </p>
 
-                <p>With each page refresh, you should see a new movie displayed along with its poster image and a short description.
+                <p>
+                    4. Created an awesome list of movies to watch!
                 </p>
                 
             </div>
@@ -32,7 +36,7 @@
 {% endblock %}
 
 {% block next_page %}
-<a href="{{ url_for('uc_03_description') }}">
+<a href="{{ url_for('uc_04_description') }}">
     <img src="{{ url_for('static', filename='img/right-arrow.svg') }}" alt="Next">
 </a>
 {% endblock %}
