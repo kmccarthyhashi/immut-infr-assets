@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block main_body %}
+
+<div class="main-container">
+    <div class="main-content">
+        <div class="explainer-wrapper">
+
+            <h1>&#129300 For the indecisive movie-goer:</h1>
+            
+            <table class="styled-table">
+                <tr>
+                    <th>Looking for a good movie and can’t remember that cool one you heard of last week?</th>
+                </tr>
+                <tr>
+                    <td>You and your fellow web-app developers have decided to help out! 
+                    </td>
+                </tr>
+                <tr>
+                    <td>When you see a movie you like, you can click 
+                        the <strong>“Save to favorites button”</strong> and the movie title is saved to your list. 
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><strong>How does this work?</strong> Using a database on the backend - pretty neat stuff!</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block last_page %}
+<a href="{{ url_for('uc_04_challenge') }}">
+    <img src="{{ url_for('static', filename='img/left-arrow.svg') }}" alt="Last">
+</a>
+{% endblock %}
+
+{% block next_page %}
+<a href="{{ url_for('uc_03_summary') }}">
+    <img src="{{ url_for('static', filename='img/right-arrow.svg') }}" alt="Next">
+</a>
+{% endblock %}

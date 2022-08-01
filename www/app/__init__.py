@@ -353,3 +353,7 @@ def uc_03_summary():
 @app.route('/uc-04-challenge')
 def uc_04_challenge():
   return render_template('uc-04-challenge.html')
+
+@app.route('/uc-04-description')
+def uc_04_description():
+  return render_template('uc-04-description.html')
