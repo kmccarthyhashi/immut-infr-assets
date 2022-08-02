@@ -61,62 +61,9 @@ def three():
 def setup_hcp():
   return render_template('setup_hcp.html')
 
-
-  # return render_template('setup_hcp.html', 
-  #     organization_id=session.get('organization_id'),
-  #     project_id=session.get('project_id'),
-  #     client_id=session.get('hcp_client_id'), 
-  #     client_secret=session.get('hcp_client_secret'),
-  #     hcp_form=hcp_form)
-
-# @app.route('/setup_hcp_results')
-# def setup_hcp_results():
-#   return render_template('setup_hcp_results.html', 
-#       organization_id=session.get('organization_id'),
-#       project_id=session.get('project_id'),
-#       client_id=session.get('hcp_client_id'), 
-#       client_secret=session.get('hcp_client_secret'),
-#       client_token=session.get('hcp_client_token'))
-
 @app.route('/setup_tfc')
 def setup_tfc():
   return render_template('setup_tfc.html')
-
-  # tfc_form = TFCForm()
-
-  # if request.method == 'GET':
-  #   if not session.get('tfc_organization'):
-  #     session['tfc_organization'] = ""
-  #   if not session.get('tfc_workspace'):
-  #     session['tfc_workspace'] = ""
-  #   if not session.get('tfc_token'):
-  #     session['tfc_token'] = ""
-
-  # if request.method == 'POST':
-
-  #   if tfc_form.tfc_organization.data:
-  #     session['tfc_organization'] = tfc_form.tfc_organization.data
-  #   else:
-  #     session['tfc_organization'] = ""
-
-  #   if tfc_form.tfc_workspace.data:
-  #     session['tfc_workspace'] = tfc_form.tfc_workspace.data
-  #   else:
-  #     session['tfc_workspace'] = ""
-
-  #   if tfc_form.tfc_token.data:
-  #     session['tfc_token'] = tfc_form.tfc_token.data
-  #   else:
-  #     session['tfc_token'] = ""
-
-  #   if tfc_form.validate_on_submit():
-  #     writeToLocalConfigFile()
-
-  # return render_template('setup_tfc.html',
-  #     tfc_organization = session.get('tfc_organization'),
-  #     tfc_workspace    = session.get('tfc_workspace'), 
-  #     tfc_token        = session.get('tfc_token'), 
-  #     tfc_form         = tfc_form)
 
 @app.route('/get_form_status')
 def get_form_status():
