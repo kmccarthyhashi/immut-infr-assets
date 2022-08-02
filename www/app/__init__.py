@@ -163,7 +163,7 @@ def getHCPBearerToken():
 
   return response
 
-@app.route('/uc-01-challenge')
+@app.route('/uc-01-challenge', methods=('GET', 'POST'))
 def uc_01_challenge():
 
   hcp_form = HCPForm()
@@ -227,7 +227,7 @@ def setup_hcp_results():
       client_secret=session.get('hcp_client_secret'),
       client_token=session.get('hcp_client_token'))
 
-@app.route('/uc-01-description')
+@app.route('/uc-01-description', methods=('GET', 'POST'))
 def uc_01_description():
   
   tfc_form = TFCForm()
