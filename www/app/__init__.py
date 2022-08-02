@@ -57,107 +57,66 @@ def two():
 def three():
   return render_template('three.html')
 
-@app.route('/setup_hcp', methods=('GET', 'POST'))
+@app.route('/setup_hcp')
 def setup_hcp():
+  return render_template('setup_hcp.html')
 
-  hcp_form = HCPForm()
 
-  if request.method == 'GET':
-    if not session.get('organization_id'):
-      session['organization_id'] = ""
-    if not session.get('project_id'):
-      session['project_id'] = ""
-    if not session.get('hcp_client_id'):
-      session['hcp_client_id'] = ""
-    if not session.get('hcp_client_secret'):
-      session['hcp_client_secret'] = ""
+  # return render_template('setup_hcp.html', 
+  #     organization_id=session.get('organization_id'),
+  #     project_id=session.get('project_id'),
+  #     client_id=session.get('hcp_client_id'), 
+  #     client_secret=session.get('hcp_client_secret'),
+  #     hcp_form=hcp_form)
 
-  if request.method == 'POST':
+# @app.route('/setup_hcp_results')
+# def setup_hcp_results():
+#   return render_template('setup_hcp_results.html', 
+#       organization_id=session.get('organization_id'),
+#       project_id=session.get('project_id'),
+#       client_id=session.get('hcp_client_id'), 
+#       client_secret=session.get('hcp_client_secret'),
+#       client_token=session.get('hcp_client_token'))
 
-    if hcp_form.organization_id.data:
-      session['organization_id'] = hcp_form.organization_id.data
-    else:
-      session['organization_id'] = ""
-
-    if hcp_form.project_id.data:
-      session['project_id'] = hcp_form.project_id.data
-    else: 
-      session['project_id'] = ""
-
-    if hcp_form.client_id.data:
-      session['hcp_client_id'] = hcp_form.client_id.data
-    else:
-      session['hcp_client_id'] = ""
-
-    if  hcp_form.client_secret.data:
-      session['hcp_client_secret'] = hcp_form.client_secret.data
-    else:
-      session['hcp_client_secret'] = ""
-
-    if hcp_form.validate_on_submit():
-
-      validation = getHCPBearerToken()
-
-      if (validation.status_code == 200):  
-          session['hcp_client_token'] = validation.json()["access_token"]
-      else:
-          session['hcp_client_token'] = "Invalid Credentials."
-
-      writeToLocalConfigFile()
-
-  return render_template('setup_hcp.html', 
-      organization_id=session.get('organization_id'),
-      project_id=session.get('project_id'),
-      client_id=session.get('hcp_client_id'), 
-      client_secret=session.get('hcp_client_secret'),
-      hcp_form=hcp_form)
-
-@app.route('/setup_hcp_results')
-def setup_hcp_results():
-  return render_template('setup_hcp_results.html', 
-      organization_id=session.get('organization_id'),
-      project_id=session.get('project_id'),
-      client_id=session.get('hcp_client_id'), 
-      client_secret=session.get('hcp_client_secret'),
-      client_token=session.get('hcp_client_token'))
-
-@app.route('/setup_tfc', methods=('GET', 'POST'))
+@app.route('/setup_tfc')
 def setup_tfc():
-  tfc_form = TFCForm()
+  return render_template('setup_tfc.html')
 
-  if request.method == 'GET':
-    if not session.get('tfc_organization'):
-      session['tfc_organization'] = ""
-    if not session.get('tfc_workspace'):
-      session['tfc_workspace'] = ""
-    if not session.get('tfc_token'):
-      session['tfc_token'] = ""
+  # tfc_form = TFCForm()
 
-  if request.method == 'POST':
+  # if request.method == 'GET':
+  #   if not session.get('tfc_organization'):
+  #     session['tfc_organization'] = ""
+  #   if not session.get('tfc_workspace'):
+  #     session['tfc_workspace'] = ""
+  #   if not session.get('tfc_token'):
+  #     session['tfc_token'] = ""
 
-    if tfc_form.tfc_organization.data:
-      session['tfc_organization'] = tfc_form.tfc_organization.data
-    else:
-      session['tfc_organization'] = ""
+  # if request.method == 'POST':
 
-    if tfc_form.tfc_workspace.data:
-      session['tfc_workspace'] = tfc_form.tfc_workspace.data
-    else:
-      session['tfc_workspace'] = ""
+  #   if tfc_form.tfc_organization.data:
+  #     session['tfc_organization'] = tfc_form.tfc_organization.data
+  #   else:
+  #     session['tfc_organization'] = ""
 
-    if tfc_form.tfc_token.data:
-      session['tfc_token'] = tfc_form.tfc_token.data
-    else:
-      session['tfc_token'] = ""
+  #   if tfc_form.tfc_workspace.data:
+  #     session['tfc_workspace'] = tfc_form.tfc_workspace.data
+  #   else:
+  #     session['tfc_workspace'] = ""
 
-    if tfc_form.validate_on_submit():
-      writeToLocalConfigFile()
+  #   if tfc_form.tfc_token.data:
+  #     session['tfc_token'] = tfc_form.tfc_token.data
+  #   else:
+  #     session['tfc_token'] = ""
 
-  return render_template('setup_tfc.html',
-      tfc_organization = session.get('tfc_organization'),
-      tfc_workspace    = session.get('tfc_workspace'), 
-      tfc_token        = session.get('tfc_token'), 
-      tfc_form         = tfc_form)
+  #   if tfc_form.validate_on_submit():
+  #     writeToLocalConfigFile()
+
+  # return render_template('setup_tfc.html',
+  #     tfc_organization = session.get('tfc_organization'),
+  #     tfc_workspace    = session.get('tfc_workspace'), 
+  #     tfc_token        = session.get('tfc_token'), 
+  #     tfc_form         = tfc_form)
 
 @app.route('/get_form_status')
 def get_form_status():
@@ -258,6 +217,15 @@ def uc_01_challenge():
       client_id=session.get('hcp_client_id'), 
       client_secret=session.get('hcp_client_secret'),
       hcp_form=hcp_form)
+
+@app.route('/uc_01_challenge_results')
+def setup_hcp_results():
+  return render_template('uc_01_challenge_results.html', 
+      organization_id=session.get('organization_id'),
+      project_id=session.get('project_id'),
+      client_id=session.get('hcp_client_id'), 
+      client_secret=session.get('hcp_client_secret'),
+      client_token=session.get('hcp_client_token'))
 
 @app.route('/uc-01-description')
 def uc_01_description():
