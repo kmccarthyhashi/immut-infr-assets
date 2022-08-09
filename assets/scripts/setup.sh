@@ -65,5 +65,7 @@ export TMDB=af2b4e4b7c2c224650dfad4faa2de6ff
 export POSTGRES_URL=postgres://postgres:mysecretpassword@localhost:5432/postgres
 go install github.com/go-sql-driver/mysql
 go install github.com/sabinlehaci/go-web-app@fce5140f2f3a609c36b6061b39726b0ee55ed6ca
+go install github.com/sabinlehaci/go-web-app@master
+
 
 EOF
