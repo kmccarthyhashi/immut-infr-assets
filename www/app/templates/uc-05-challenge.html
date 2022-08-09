@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block main_body %}
+
+<div class="main-container">
+    <div class="main-content">
+        <div class="slide-content">
+
+            <div class="explainer-wrapper">
+                <center><h1><strong>Additional Components of an Immutable Pattern</strong></h1></center>
+                <center><img src="{{ url_for('static', filename='img/more.gif') }}" alt="More" width="300" height="275"></center>
+                <h1>We covered these technical aspects of an immutable pattern:</h1>
+                <p>     1. Code Repository
+                <br>    2. Image Factory
+                <br>    3. Image Storage
+                <br>    4. Image Registry  
+                <br>    5. infrastructure provisioner  
+                </p>
+                
+                <h1>The last 3 components:</h1>
+                <p>     6. Health Checks
+                <br>    7. Observability Platform
+                <br>    8. Dynamic Routing  
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block next_page %}
+<a href="{{ url_for('uc_05_description') }}">
+    <img src="{{ url_for('static', filename='img/right-arrow.svg') }}" alt="Next">
+</a>
+{% endblock %}

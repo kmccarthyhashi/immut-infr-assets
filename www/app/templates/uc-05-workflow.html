@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block main_body %}
+
+<div class="main-container">
+    <div class="main-content">
+        <div class="slide-content">
+
+            <div class="explainer-wrapper">
+                <h1><strong>Positive outcomes from an immutable pattern: </strong></h1>
+                <p>    (1) Reduce risk by keeping patches up to date
+                <br>   (2) Reduce failure rates by automating releases
+                <br>   (3) Reduce failure rates by observable traffic shaping
+                <br>   (4) Increase knowledge towards containerized/scheduled run patterns
+                </p>  
+           </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block last_page %}
+<a href="{{ url_for('uc_05_description') }}">
+    <img src="{{ url_for('static', filename='img/left-arrow.svg') }}" alt="Last">
+</a>
+{% endblock %}
+
+{% block next_page %}
+<a href="{{ url_for('uc_05_summary') }}">
+    <img src="{{ url_for('static', filename='img/right-arrow.svg') }}" alt="Next">
+</a>
+{% endblock %}

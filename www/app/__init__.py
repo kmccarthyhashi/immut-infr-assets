@@ -272,3 +272,11 @@ def uc_04_challenge():
 @app.route('/uc-04-description')
 def uc_04_description():
   return render_template('uc-04-description.html')
+
+@app.route('/uc-05-challenge')
+def uc_04_challenge():
+  return render_template('uc-05-challenge.html')
+
+@app.route('/uc-05-description')
+def uc_04_description():
+  return render_template('uc-05-description.html')

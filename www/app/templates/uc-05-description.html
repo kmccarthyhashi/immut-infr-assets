@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block main_body %}
+
+<div class="main-container">
+    <div class="main-content">
+        <div class="slide-content">
+
+            <div class="explainer-wrapper">
+                <h1><strong>How to extend what was covered in this track:</strong></h1>
+                <center><img src="{{ url_for('static', filename='img/future.gif') }}" alt="Future" width="300" height="275"></center>
+                <p> Observability Platform --> Datadog
+                </p>
+                <p>
+                    Health Checks --> HashiCorp Consul
+                </p>
+                
+                <p>
+                    Dynamic Routing --> HashiCorp Consul
+                </p>  
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block last_page %}
+<a href="{{ url_for('uc_05_challenge') }}">
+    <img src="{{ url_for('static', filename='img/left-arrow.svg') }}" alt="Last">
+</a>
+{% endblock %}
+
+{% block next_page %}
+<a href="{{ url_for('uc_05_workflow') }}">
+    <img src="{{ url_for('static', filename='img/right-arrow.svg') }}" alt="Next">
+</a>
+{% endblock %}
