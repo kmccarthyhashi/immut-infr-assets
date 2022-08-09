@@ -282,9 +282,9 @@ def uc_05_description():
   return render_template('uc-05-description.html')
 
 @app.route('/uc-05-workflow')
-def uc_05_description():
+def uc_05_workflow():
   return render_template('uc-05-workflow.html')
 
 @app.route('/uc-05-summary')
-def uc_05_description():
+def uc_05_summary():
   return render_template('uc-05-summary.html')
