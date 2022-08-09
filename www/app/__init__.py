@@ -274,9 +274,17 @@ def uc_04_description():
   return render_template('uc-04-description.html')
 
 @app.route('/uc-05-challenge')
-def uc_04_challenge():
+def uc_05_challenge():
   return render_template('uc-05-challenge.html')
 
 @app.route('/uc-05-description')
-def uc_04_description():
+def uc_05_description():
   return render_template('uc-05-description.html')
+
+@app.route('/uc-05-workflow')
+def uc_05_description():
+  return render_template('uc-05-workflow.html')
+
+@app.route('/uc-05-summary')
+def uc_05_description():
+  return render_template('uc-05-summary.html')
