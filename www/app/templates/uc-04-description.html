@@ -11,25 +11,25 @@
     <div class="main-content">
         <div class="explainer-wrapper">
 
-            <h1>&#129300 For the indecisive movie-goer:</h1>
+            <h1><strong>Tying it all togehter:</strong></h1>
             
             <table class="styled-table">
                 <tr>
-                    <th>Looking for a good movie and can’t remember that cool one you heard of last week?</th>
+                    <th><strong>Golden images</strong> are essential in our immutable pattern: 
+                    <br>   - A golden image is essentially a template for the image-type you want to base subsequent future versions of the image off of
+                    <br> - This allows us to have standardized policy and structure in place
+                    </th>
                 </tr>
                 <tr>
-                    <td>You and your fellow web-app developers have decided to help out! 
+                    <td>We deploy Version 2, once we confirm that the changes are enacted and the new image successfully deploys, then we can decommission Version 1 
                     </td>
                 </tr>
+                <br>
                 <tr>
-                    <td>When you see a movie you like, you can click 
-                        the <strong>“Save to favorites button”</strong> and the movie title is saved to your list. 
+                    <td>We rebuild the whole thing all at once to streamline the workflow and versioning of machine images so that all images are identical and no one image has particular unique characteristics
                     </td>
                 </tr>
-                
-                <tr>
-                    <td><strong>How does this work?</strong> Using a database on the backend - pretty neat stuff!</td>
-                </tr>
+                <br> 
             </table>
 
         </div>
@@ -41,11 +41,5 @@
 {% block last_page %}
 <a href="{{ url_for('uc_04_challenge') }}">
     <img src="{{ url_for('static', filename='img/left-arrow.svg') }}" alt="Last">
-</a>
-{% endblock %}
-
-{% block next_page %}
-<a href="{{ url_for('uc_03_summary') }}">
-    <img src="{{ url_for('static', filename='img/right-arrow.svg') }}" alt="Next">
 </a>
 {% endblock %}
